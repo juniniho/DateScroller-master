@@ -1,1 +1,1 @@
-include ':datescroller'
+include ':datescroller', ':app'
