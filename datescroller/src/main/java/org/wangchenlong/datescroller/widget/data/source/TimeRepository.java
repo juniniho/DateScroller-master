@@ -133,8 +133,15 @@ public class TimeRepository implements TimeDataSource {
     public boolean isMinHour(int year, int month, int day, int hour) {
         return Utils.isTimeEquals(mCalendarMin, year, month, day, hour);
     }
+
+
     @Override
     public WheelCalendar getDefaultCalendar() {
         return mScrollerConfig.mCurCalendar;
+    }
+
+    @Override
+    public WheelCalendar getDefaultFinishCalendar() {
+        return mScrollerConfig.mCurFinishCalendar;
     }
 }

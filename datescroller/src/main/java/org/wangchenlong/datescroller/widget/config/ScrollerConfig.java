@@ -3,6 +3,7 @@ package org.wangchenlong.datescroller.widget.config;
 
 import android.support.annotation.ColorRes;
 
+import org.wangchenlong.datescroller.R;
 import org.wangchenlong.datescroller.widget.data.Type;
 import org.wangchenlong.datescroller.widget.data.WheelCalendar;
 import org.wangchenlong.datescroller.widget.listener.OnDateSetListener;
@@ -37,8 +38,12 @@ public class ScrollerConfig {
     public WheelCalendar mMinCalendar = new WheelCalendar(0); // 最小日期
     public WheelCalendar mMaxCalendar = new WheelCalendar(0); // 最大日期
     public WheelCalendar mCurCalendar = new WheelCalendar(System.currentTimeMillis()); // 当前日期
+    public WheelCalendar mCurFinishCalendar = new WheelCalendar(System.currentTimeMillis()); // 当前结束日期
 
     public OnDateSetListener mCallback; // 回调
 
     public int mMaxLines = MAX_LINE; // 最大行数, 依据控件样式
+
+    public int layoutId = R.layout.timepicker_layout;
+
 }

@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity
     // 数据的回调
     private OnDateSetListener mOnDateSetListener = new OnDateSetListener() {
         @Override
-        public void onDateSet(DateScrollerDialog timePickerView, long milliseconds) {
+        public void onDateSet(DateScrollerDialog timePickerView, long milliseconds,long finish) {
             mLastTime = milliseconds;
             String text = getDateToString(milliseconds);
             mTvTime.setText(text);
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity
     // 数据的回调
     private OnDateSetListener mOnDateSetListener1 = new OnDateSetListener() {
         @Override
-        public void onDateSet(DateScrollerDialog timePickerView, long milliseconds1) {
+        public void onDateSet(DateScrollerDialog timePickerView, long milliseconds1,long finish) {
             mLastTime = milliseconds1;
             String text = getDateToString1(milliseconds1);
             mTvTime1.setText(text);
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity
     // 数据的回调
     private OnDateSetListener mOnDateSetListener2 = new OnDateSetListener() {
         @Override
-        public void onDateSet(DateScrollerDialog timePickerView, long milliseconds2) {
+        public void onDateSet(DateScrollerDialog timePickerView, long milliseconds2,long finish) {
             mLastTime = milliseconds2;
             String text = getDateToString2(milliseconds2);
             mTvTime2.setText(text);
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity
     // 数据的回调
     private OnDateSetListener mOnDateSetListener3 = new OnDateSetListener() {
         @Override
-        public void onDateSet(DateScrollerDialog timePickerView, long milliseconds3) {
+        public void onDateSet(DateScrollerDialog timePickerView, long milliseconds3,long finish) {
             mLastTime = milliseconds3;
             String text = getDateToString3(milliseconds3);
             mTvTime3.setText(text);
@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity
     // 数据的回调
     private OnDateSetListener mOnDateSetListener4 = new OnDateSetListener() {
         @Override
-        public void onDateSet(DateScrollerDialog timePickerView, long milliseconds4) {
+        public void onDateSet(DateScrollerDialog timePickerView, long milliseconds4,long finish) {
             mLastTime = milliseconds4;
             String text = getDateToString4(milliseconds4);
             mTvTime4.setText(text);
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity
     // 数据的回调
     private OnDateSetListener mOnDateSetListener5 = new OnDateSetListener() {
         @Override
-        public void onDateSet(DateScrollerDialog timePickerView, long milliseconds5) {
+        public void onDateSet(DateScrollerDialog timePickerView, long milliseconds5,long finish) {
             mLastTime = milliseconds5;
             String text = getDateToString5(milliseconds5);
             mTvTime5.setText(text);
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity
                         .setTitleStringId("请选择年月日时分")
                         .setMinMilliseconds(System.currentTimeMillis() - HUNDRED_YEARS)
                         .setMaxMilliseconds(System.currentTimeMillis())
-                        .setCurMilliseconds(mLastTime)
+                        .setCurMilliseconds(mLastTime,1)
                         .setCallback(mOnDateSetListener)
                         .build();
                 if (dialog != null) {
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity
                         .setTitleStringId("请选择年月日")
                         .setMinMilliseconds(System.currentTimeMillis() - HUNDRED_YEARS)
                         .setMaxMilliseconds(System.currentTimeMillis())
-                        .setCurMilliseconds(mLastTime1)
+                        .setCurMilliseconds(mLastTime1,1)
                         .setCallback(mOnDateSetListener1)
                         .build();
                 if (dialog != null) {
@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity
                         .setTitleStringId("请选择时分")
                         .setMinMilliseconds(System.currentTimeMillis() - HUNDRED_YEARS)
                         .setMaxMilliseconds(System.currentTimeMillis())
-                        .setCurMilliseconds(mLastTime2)
+                        .setCurMilliseconds(mLastTime2,1)
                         .setCallback(mOnDateSetListener2)
                         .build();
                 if (dialog != null) {
@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity
                         .setTitleStringId("请选择月日时分")
                         .setMinMilliseconds(System.currentTimeMillis() - HUNDRED_YEARS)
                         .setMaxMilliseconds(System.currentTimeMillis())
-                        .setCurMilliseconds(mLastTime3)
+                        .setCurMilliseconds(mLastTime3,1)
                         .setCallback(mOnDateSetListener3)
                         .build();
                 if (dialog != null) {
@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity
                         .setTitleStringId("请选择年月")
                         .setMinMilliseconds(System.currentTimeMillis() - HUNDRED_YEARS)
                         .setMaxMilliseconds(System.currentTimeMillis())
-                        .setCurMilliseconds(mLastTime4)
+                        .setCurMilliseconds(mLastTime4,1)
                         .setCallback(mOnDateSetListener4)
                         .build();
                 if (dialog != null) {
@@ -226,7 +226,7 @@ public class MainActivity extends AppCompatActivity
                         .setTitleStringId("请选择年份")
                         .setMinMilliseconds(System.currentTimeMillis() - HUNDRED_YEARS)
                         .setMaxMilliseconds(System.currentTimeMillis())
-                        .setCurMilliseconds(mLastTime5)
+                        .setCurMilliseconds(mLastTime5,1)
                         .setCallback(mOnDateSetListener5)
                         .build();
                 if (dialog != null) {

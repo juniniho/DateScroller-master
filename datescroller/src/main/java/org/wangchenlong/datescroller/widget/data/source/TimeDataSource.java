@@ -39,4 +39,5 @@ public interface TimeDataSource {
     boolean isMinHour(int year, int month, int day, int hour);
 
     WheelCalendar getDefaultCalendar();
+    WheelCalendar getDefaultFinishCalendar();
 }

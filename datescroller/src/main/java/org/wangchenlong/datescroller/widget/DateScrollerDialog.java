@@ -30,6 +30,7 @@ public class DateScrollerDialog extends DialogFragment implements View.OnClickLi
     private ScrollerConfig mScrollerConfig;
     private TimeWheel mTimeWheel;
     private long mCurrentMilliseconds;
+    private long mCurrentFinishMilliseconds;
 
     // 实例化参数, 传入数据
     private static DateScrollerDialog newInstance(ScrollerConfig scrollerConfig) {
@@ -85,7 +86,7 @@ public class DateScrollerDialog extends DialogFragment implements View.OnClickLi
     private View initView() {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         final ViewGroup nullParent = null;
-        View view = inflater.inflate(R.layout.timepicker_layout, nullParent);
+        View view = inflater.inflate(mScrollerConfig.layoutId, nullParent);
 
         TextView cancel = (TextView) view.findViewById(R.id.tv_cancel);
         cancel.setOnClickListener(this); // 设置取消按钮
@@ -140,8 +141,18 @@ public class DateScrollerDialog extends DialogFragment implements View.OnClickLi
         calendar.set(Calendar.MINUTE, mTimeWheel.getCurrentMinute());
 
         mCurrentMilliseconds = calendar.getTimeInMillis();
+
+        Calendar calendar2 = Calendar.getInstance();
+        calendar2.clear();
+
+        calendar2.set(Calendar.YEAR, mTimeWheel.getCurrentFinishYear());
+        calendar2.set(Calendar.MONTH, mTimeWheel.getCurrentFinishMonth() - 1);
+        calendar2.set(Calendar.DAY_OF_MONTH, mTimeWheel.getCurrentFinishDay());
+
+        mCurrentFinishMilliseconds = calendar2.getTimeInMillis();
+
         if (mScrollerConfig.mCallback != null) {
-            mScrollerConfig.mCallback.onDateSet(this, mCurrentMilliseconds);
+            mScrollerConfig.mCallback.onDateSet(this, mCurrentMilliseconds, mCurrentFinishMilliseconds);
         }
         dismiss();
     }
@@ -214,8 +225,9 @@ public class DateScrollerDialog extends DialogFragment implements View.OnClickLi
             return this;
         }
 
-        public Builder setCurMilliseconds(long milliseconds) {
+        public Builder setCurMilliseconds(long milliseconds, long milliFinishSeconds) {
             mScrollerConfig.mCurCalendar = new WheelCalendar(milliseconds);
+            mScrollerConfig.mCurFinishCalendar = new WheelCalendar(milliFinishSeconds);
             return this;
         }
 
@@ -246,6 +258,11 @@ public class DateScrollerDialog extends DialogFragment implements View.OnClickLi
 
         public Builder setCallback(OnDateSetListener listener) {
             mScrollerConfig.mCallback = listener;
+            return this;
+        }
+
+        public Builder setLayoutId(int layoutId){
+            mScrollerConfig.layoutId = layoutId;
             return this;
         }
 
