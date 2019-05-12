@@ -1,4 +1,4 @@
-package org.wangchenlong.datescroller;
+package com.cy.app;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 // 出生日期
                 DateScrollerDialog dialog = new DateScrollerDialog.Builder()
-                        .setType(HOURS_MINS)
+                        .setType(Type.HOURS_MINS)
                         .setTitleStringId("请选择时分")
                         .setMinMilliseconds(System.currentTimeMillis() - HUNDRED_YEARS)
                         .setMaxMilliseconds(System.currentTimeMillis())
